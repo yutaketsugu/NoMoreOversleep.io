@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.30'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.example.nomoreoversleep"
+        minSdk 24
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures{
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    def nav_version = "2.3.5"
+
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha06"
+
+    // jsoup HTML parser library @ https://jsoup.org/
+    implementation 'org.jsoup:jsoup:1.14.2'
+
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+
+    // To use constraintlayout in compose
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta01"
+
+    implementation 'com.google.android.material:material:1.4.0'
+
+    // ViewModel用
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    // SafeArgs
+    apply plugin: "androidx.navigation.safeargs"
+
+    // Serialization
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0-RC'
+}
